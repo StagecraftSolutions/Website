@@ -14,7 +14,7 @@
 :root{
   --bg:#f3f4ee;--panel:#ffffff;--panel2:#e9ebe2;--line:#d9ddd0;--line2:#c4cab9;
   --text:#151a12;--muted:#4f584c;--faint:#6b7468;
-  --lime:#c6f36b;--lime-ink:#151a12;--accent:#3f6a00;--orange:#9a4d00;--blue:#1d5bd0;
+  --lime:#c6f36b;--lime-ink:#151a12;--accent:#3f6a00;--orange:#9a4d00;--ok:#3f6a00;--blue:#1d5bd0;
   --shadow:0 1px 2px #0000000d,0 12px 40px -18px #1a2a0a40;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
@@ -92,15 +92,6 @@ figcaption{font-size:13px;color:var(--faint);margin-top:10px}
 .stats .src{font:12px var(--mono);color:var(--faint);padding-bottom:28px;margin:-12px 0 0}
 @media (max-width:760px){.stats ul{grid-template-columns:repeat(2,1fr);gap:28px 20px}}
 
-/* Schritte */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
-.steps li{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;counter-increment:s;display:flex;flex-direction:column}
-.steps li:before{content:counter(s,decimal-leading-zero);font:700 44px/1 var(--display);color:var(--accent);margin-bottom:18px}
-.steps h3{margin-bottom:10px}
-.steps p{color:var(--muted);margin:0 0 16px;flex:1}
-.steps a{font-weight:600;color:var(--accent);text-underline-offset:3px;font-size:15px}
-@media (max-width:860px){.steps{grid-template-columns:1fr}}
-
 /* Prüfungen */
 .checks-head{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:end;margin-bottom:36px}
 .checks-head .sub{margin:0}
@@ -116,25 +107,45 @@ figcaption{font-size:13px;color:var(--faint);margin-top:10px}
 @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.checks-head,.side{grid-template-columns:1fr;gap:16px}}
 @media (max-width:520px){.grid{grid-template-columns:1fr}}
 
-/* Projekte */
-.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.proj{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-.proj .img{aspect-ratio:16/10;background:#101316;border-bottom:1px solid var(--line);overflow:hidden}
-.proj .img img{width:100%;height:100%;object-fit:cover;object-position:left top}
-.proj .body{padding:22px;display:flex;flex-direction:column;flex:1}
+/* Projekte: Rack Manufaktur → Library → StageCraft */
+.flowsec{background:var(--panel2)}
+.flow{display:grid;grid-template-columns:1fr 92px 1.12fr 92px 1fr;align-items:stretch;margin-top:8px}
+.node{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.node.hub{border:2px solid var(--accent);transform:translateY(-14px)}
+.node .img{aspect-ratio:16/10;background:#101316;border-bottom:1px solid var(--line);overflow:hidden}
+.node .img img{width:100%;height:100%;object-fit:cover;object-position:left top}
+.node .body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.node .role{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.node h3{font-size:28px;margin-bottom:12px}
+.node.hub h3{font-size:32px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .tag{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line2);border-radius:4px;padding:3px 7px;color:var(--muted)}
-.tag.live{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+.tag.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 55%,transparent)}
 .tag.dev{color:var(--orange);border-color:color-mix(in srgb,var(--orange) 55%,transparent)}
-.proj h3{font-size:26px;margin-bottom:10px}
-.proj p{color:var(--muted);margin:0 0 14px;font-size:15px}
-.proj ul{margin:0 0 18px;padding-left:18px;color:var(--muted);font-size:14.5px}
-.proj ul li{margin-bottom:3px}
-.proj .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:600;font-size:15px}
-.proj .links a{color:var(--accent);text-underline-offset:3px}
-.proj .note{font-size:13.5px;color:var(--faint);margin:auto 0 0}
-@media (max-width:1000px){.projects{grid-template-columns:1fr 1fr}}
-@media (max-width:680px){.projects{grid-template-columns:1fr}}
+.node p{color:var(--muted);margin:0 0 14px;font-size:15px}
+.node ul{margin:0 0 18px;padding-left:18px;color:var(--muted);font-size:14.5px}
+.node ul li{margin-bottom:3px}
+.node .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:600;font-size:15px}
+.node .links a{color:var(--accent);text-underline-offset:3px}
+.node .note{font-size:13.5px;color:var(--faint);margin:auto 0 0}
+.link{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 4px;text-align:center}
+.link .line{position:relative;width:100%;height:2px;background:var(--accent);display:grid;place-items:center}
+.link.planned .line{background:none;border-top:2px dashed var(--line2)}
+.link .line svg{background:var(--panel2);color:var(--accent);border:2px solid currentColor;border-radius:50%;width:26px;height:26px;padding:4px;box-sizing:border-box}
+.link.planned .line svg{color:var(--faint);margin-top:-2px}
+.link .lbl{font:12px/1.35 var(--body);color:var(--muted)}
+.link .lbl b{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.link.planned .lbl b{color:var(--faint)}
+@media (max-width:1060px){
+  .flow{grid-template-columns:1fr;max-width:620px;margin-inline:auto}
+  .node.hub{transform:none}
+  .link{flex-direction:row;padding:14px 0;gap:14px}
+  .link .line{width:2px;height:44px;flex:none}
+  .link.planned .line{border-top:0;border-left:2px dashed var(--line2)}
+  .link .line svg{transform:rotate(90deg)}
+  .link.planned .line svg{margin:0 0 0 -2px}
+  .link .lbl br{display:none}
+}
 
 /* Vergleich */
 .tablewrap{margin-top:28px;overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
@@ -193,9 +204,8 @@ footer{padding:48px 0 40px}
   <div class="wrap">
     <a class="logo" href="./" aria-label="Stagecraft Solutions, Startseite"><span class="mark" aria-hidden="true"></span>Stagecraft <small>Solutions</small></a>
     <nav aria-label="Abschnitte">
-      <a href="#so-gehts">So geht's</a>
-      <a href="#pruefungen">Prüfungen</a>
       <a href="#projekte">Projekte</a>
+      <a href="#pruefungen">Prüfungen</a>
       <a href="#offen">Offene Daten</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -237,31 +247,90 @@ footer{padding:48px 0 40px}
   </div>
 </section>
 
-<!-- 3 · So funktioniert es -->
-<section id="so-gehts" aria-labelledby="so-h">
+<!-- 3 · Die drei Projekte -->
+<section id="projekte" class="flowsec" aria-labelledby="pj-h">
   <div class="wrap">
-    <p class="eyebrow">So funktioniert es</p>
-    <h2 id="so-h">Drei Werkzeuge, ein Datenbestand.</h2>
-    <p class="sub">Die Teile greifen ineinander. Du kannst jedes auch allein nutzen.</p>
-    <ol class="steps">
-      <li>
-        <h3>Gerät in der Library finden</h3>
-        <p>Suche nach Name, Hersteller, Artikelnummer oder Anschluss. Jeder Artikel hat Höheneinheiten, Einbautiefe, Anschlüsse und, wo vorhanden, Gewicht, Preis und eine maßstäbliche Ansicht.</p>
-        <a href="https://library.stagecraft.solutions/">Zur Library</a>
-      </li>
-      <li>
-        <h3>Rack in der Manufaktur bauen</h3>
-        <p>Case wählen, Geräte und Anschlussfelder einsetzen, vorn und hinten prüfen. Am Ende stehen Stückliste, Bestelllisten je Lieferant und Fertigungshinweise.</p>
-        <a href="https://rack.stagecraft.solutions/">Zum Konfigurator</a>
-      </li>
-      <li>
-        <h3>Material und Projekt in StageCraft planen</h3>
-        <p>Das fertige Rack wird Material im Lager, wird gebucht, gepackt und abgerechnet. StageCraft ist in Entwicklung, der Pilotbetrieb wird vorbereitet.</p>
-        <a href="#stagecraft">Mehr zu StageCraft</a>
-      </li>
-    </ol>
+    <p class="eyebrow">Die drei Projekte</p>
+    <h2 id="pj-h">Drei Werkzeuge, ein Datenbestand.</h2>
+    <p class="sub">Die Rack Manufaktur holt ihre Geräte und Teile aus der Library. Die Library soll auch StageCraft mit Artikelstammdaten versorgen. Jedes Werkzeug lässt sich auch allein nutzen.</p>
+
+    <div class="flow">
+      <article class="node">
+        <div class="img"><img src="assets/img/rack-manufaktur-konfigurator.webp" width="2880" height="1800" loading="lazy" alt="Rack Manufaktur: Konfigurator mit Vorderansicht eines bestückten Racks."></div>
+        <div class="body">
+          <p class="role">Planen</p>
+          <h3>Rack Manufaktur</h3>
+          <div class="tags"><span class="tag live">Live</span><span class="tag">Konfigurator</span><span class="tag">MIT</span></div>
+          <p>Konfigurator für 19″-Rack-Cases mit Anschlussfeldern, Geräten und Rackteilen. Deutsch und Englisch.</p>
+          <ul>
+            <li>Case wählen, bestücken, prüfen</li>
+            <li>Vorder-, Seiten- und Rückansicht mit Kollisionsprüfung</li>
+            <li>Stückliste, Bestelllisten, Bohrpläne, Etiketten-PDF</li>
+          </ul>
+          <div class="links"><a href="https://rack.stagecraft.solutions/">Rack konfigurieren</a><a href="https://github.com/StagecraftSolutions/Rackmanufactur" rel="noopener">Quellcode</a></div>
+        </div>
+      </article>
+
+      <div class="link live" aria-label="Verbindung: Library liefert Geräte, Ansichten und Teile per API an die Rack Manufaktur, live">
+        <span class="line" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <span class="lbl">Geräte, Ansichten, Teile<br><b>per API · live</b></span>
+      </div>
+
+      <article class="node hub">
+        <div class="img"><img src="assets/img/library-katalog.webp" width="2880" height="1800" loading="lazy" alt="Katalogseite der Stagecraft Library mit Suchfeld, Filtern nach Hersteller und Kategorie und einer Tabelle mit Artikeln, Maßen und Prüfstatus."></div>
+        <div class="body">
+          <p class="role">Datenbasis</p>
+          <h3>Stagecraft Library</h3>
+          <div class="tags"><span class="tag live">Live</span><span class="tag">Offene Daten</span><span class="tag">JSON-API</span></div>
+          <p>Offene Artikeldatenbank für Veranstaltungstechnik. Ein Artikel pro JSON-Datei in Git, Änderungen per Pull Request.</p>
+          <ul>
+            <li>429 Artikel: Geräte, Steckverbinder, Blenden, Wannen, Schubladen, Cases, Kabel</li>
+            <li>107 maßstäbliche Front- und Rückansichten</li>
+            <li>Statische API mit offenem CORS, JSON und CSV</li>
+          </ul>
+          <div class="links"><a href="https://library.stagecraft.solutions/">Library öffnen</a><a href="https://github.com/StagecraftSolutions/Library" rel="noopener">Quellcode</a></div>
+        </div>
+      </article>
+
+      <div class="link planned" aria-label="Verbindung: Library soll StageCraft mit Artikelstammdaten versorgen, geplant">
+        <span class="line" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <span class="lbl">Artikelstammdaten<br><b>geplant</b></span>
+      </div>
+
+      <article class="node" id="stagecraft">
+        <div class="img"><img src="assets/img/stagecraft-projekte.jpg" width="1440" height="900" loading="lazy" alt="StageCraft: Projektliste mit Status, Zeitraum, Fortschritt in sechs Bereichen und Engpass-Hinweisen."></div>
+        <div class="body">
+          <p class="role">Vermieten und abrechnen</p>
+          <h3>StageCraft CRM</h3>
+          <div class="tags"><span class="tag dev">In Entwicklung</span><span class="tag">Selbst gehostet</span><span class="tag">API-first</span></div>
+          <p>Software für Verleih- und Produktionsfirmen: Kunden, Projekte, Material, Crew. Ohne Nutzerlizenzen, auf eigener Hardware.</p>
+          <ul>
+            <li>Kontakte, Projekte, Angebote, Verfügbarkeit in Echtzeit</li>
+            <li>Material und Lager, Crew und Fuhrpark, Werkstatt</li>
+            <li>Rechnungen, E-Rechnung, DATEV-Export</li>
+          </ul>
+          <p class="note">Pilotbetrieb in Vorbereitung. Der Quellcode ist noch nicht öffentlich.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption class="sr" style="position:absolute;left:-9999px">Die drei Projekte im Vergleich</caption>
+        <thead><tr><th scope="col"></th><th scope="col">Rack Manufaktur</th><th scope="col">Library</th><th scope="col">StageCraft CRM</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Wofür</th><td>Rack-Cases planen und bestellen</td><td>Produktdaten nachschlagen und abrufen</td><td>Verleih und Produktion führen</td></tr>
+          <tr><th scope="row">Stand</th><td>Live</td><td>Live</td><td>In Entwicklung, Pilot in Vorbereitung</td></tr>
+          <tr><th scope="row">Nutzung</th><td>Im Browser, ohne Konto; offline mit lokalem Library-Ordner</td><td>Im Browser, ohne Konto</td><td>Selbst gehostet mit Docker Compose</td></tr>
+          <tr><th scope="row">Daten</th><td>Projekte im Browser oder als Datei</td><td>JSON in Git, statische API</td><td>PostgreSQL, REST-API</td></tr>
+          <tr><th scope="row">Lizenz</th><td>MIT</td><td>Noch nicht festgelegt</td><td>Geplant: AGPL-3.0</td></tr>
+          <tr><th scope="row">Kosten</th><td>Kostenlos</td><td>Kostenlos</td><td>Keine Nutzerlizenzen</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
+
 
 <!-- 4 · Prüfungen -->
 <section id="pruefungen" aria-labelledby="pr-h">
@@ -326,74 +395,6 @@ footer{padding:48px 0 40px}
         <p>Die Prüfungen sind so gut wie die Daten. Viele Artikel in der Library sind als „ungeprüft“ oder „Platzhalter“ markiert. Kabelradien, Stecker auf der Rückseite und Lüftung rechnet der Konfigurator nicht ein.</p>
         <p>Vor Bestellung und Fertigung gilt: Maße beim Hersteller prüfen.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 5 · Die drei Projekte -->
-<section id="projekte" aria-labelledby="pj-h">
-  <div class="wrap">
-    <p class="eyebrow">Die drei Projekte</p>
-    <h2 id="pj-h">Was es gibt und wie weit es ist.</h2>
-    <p class="sub">Zwei Werkzeuge laufen öffentlich. Das dritte ist in Arbeit.</p>
-    <div class="projects">
-      <article class="proj">
-        <div class="img"><img src="assets/img/library-katalog.webp" width="2880" height="1800" loading="lazy" alt="Katalogseite der Stagecraft Library mit Suchfeld, Filtern nach Hersteller und Kategorie und einer Tabelle mit Artikeln, Maßen und Prüfstatus."></div>
-        <div class="body">
-          <div class="tags"><span class="tag live">Live</span><span class="tag">Daten</span><span class="tag">JSON-API</span></div>
-          <h3>Stagecraft Library</h3>
-          <p>Offene Artikeldatenbank für Veranstaltungstechnik. Ein Artikel pro JSON-Datei in Git.</p>
-          <ul>
-            <li>19″-Geräte, Steckverbinder, Blenden, Rackwannen, Schubladen, Cases, SYSBOXX, Kabel, Zubehör</li>
-            <li>Maßstäbliche Front- und Rückansichten</li>
-            <li>Statische API mit offenem CORS, Download als JSON und CSV</li>
-          </ul>
-          <div class="links"><a href="https://library.stagecraft.solutions/">Library öffnen</a><a href="https://github.com/StagecraftSolutions/Library" rel="noopener">Quellcode</a></div>
-        </div>
-      </article>
-      <article class="proj">
-        <div class="img"><img src="assets/img/rack-manufaktur-konfigurator.webp" width="2880" height="1800" loading="lazy" alt="Rack Manufaktur: Konfigurator mit Vorderansicht eines bestückten Racks."></div>
-        <div class="body">
-          <div class="tags"><span class="tag live">Live</span><span class="tag">Konfigurator</span><span class="tag">MIT</span></div>
-          <h3>Rack Manufaktur</h3>
-          <p>Konfigurator für 19″-Rack-Cases mit Anschlussfeldern, Geräten und Rackteilen. Deutsch und Englisch.</p>
-          <ul>
-            <li>Case wählen, bestücken, Stückliste und Bestelllisten</li>
-            <li>Vorder-, Seiten- und Rückansicht mit Kollisionsprüfung</li>
-            <li>Bohrpläne, Etiketten-PDF, Gewicht, Projektdatei</li>
-          </ul>
-          <div class="links"><a href="https://rack.stagecraft.solutions/">Rack konfigurieren</a><a href="https://github.com/StagecraftSolutions/Rackmanufactur" rel="noopener">Quellcode</a></div>
-        </div>
-      </article>
-      <article class="proj" id="stagecraft">
-        <div class="img"><img src="assets/img/stagecraft-projekte.jpg" width="1440" height="900" loading="lazy" alt="StageCraft: Projektliste mit Status, Zeitraum, Fortschritt in sechs Bereichen und Engpass-Hinweisen."></div>
-        <div class="body">
-          <div class="tags"><span class="tag dev">In Entwicklung</span><span class="tag">Selbst gehostet</span><span class="tag">API-first</span></div>
-          <h3>StageCraft</h3>
-          <p>Software für Verleih- und Produktionsfirmen. Ohne Nutzerlizenzen, auf eigener Hardware.</p>
-          <ul>
-            <li>Projekte, Angebote, Verfügbarkeit in Echtzeit</li>
-            <li>Material und Lager, Crew und Fuhrpark, Werkstatt</li>
-            <li>Rechnungen, E-Rechnung, DATEV-Export</li>
-          </ul>
-          <p class="note">Pilotbetrieb in Vorbereitung. Der Quellcode ist noch nicht öffentlich.</p>
-        </div>
-      </article>
-    </div>
-
-    <div class="tablewrap">
-      <table>
-        <caption class="sr" style="position:absolute;left:-9999px">Die drei Projekte im Vergleich</caption>
-        <thead><tr><th scope="col"></th><th scope="col">Library</th><th scope="col">Rack Manufaktur</th><th scope="col">StageCraft</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Wofür</th><td>Produktdaten nachschlagen und abrufen</td><td>Rack-Cases planen und bestellen</td><td>Verleih und Produktion führen</td></tr>
-          <tr><th scope="row">Stand</th><td>Live</td><td>Live</td><td>In Entwicklung, Pilot in Vorbereitung</td></tr>
-          <tr><th scope="row">Nutzung</th><td>Im Browser, ohne Konto</td><td>Im Browser, ohne Konto; offline mit lokalem Library-Ordner</td><td>Selbst gehostet mit Docker Compose</td></tr>
-          <tr><th scope="row">Daten</th><td>JSON in Git, statische API</td><td>Projekte im Browser oder als Datei</td><td>PostgreSQL, REST-API</td></tr>
-          <tr><th scope="row">Lizenz</th><td>Noch nicht festgelegt</td><td>MIT</td><td>Geplant: AGPL-3.0</td></tr>
-          <tr><th scope="row">Kosten</th><td>Kostenlos</td><td>Kostenlos</td><td>Keine Nutzerlizenzen</td></tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </section>
