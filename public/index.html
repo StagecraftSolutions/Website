@@ -5,27 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta name="description" content="Stagecraft Solutions: eine offene Artikeldatenbank für Veranstaltungstechnik, ein Konfigurator für 19″-Rack-Cases und eine Software für Verleih- und Produktionsfirmen.">
-<meta name="theme-color" content="#111512" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f3f4ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101213" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#363839" media="(prefers-color-scheme: light)">
 <title>Stagecraft Solutions</title>
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
 :root{
-  --bg:#f3f4ee;--panel:#ffffff;--panel2:#e9ebe2;--line:#d9ddd0;--line2:#c4cab9;
-  --text:#151a12;--muted:#4f584c;--faint:#6b7468;
-  --lime:#c6f36b;--lime-ink:#151a12;--accent:#3f6a00;--orange:#9a4d00;--ok:#3f6a00;--blue:#1d5bd0;
-  --shadow:0 1px 2px #0000000d,0 12px 40px -18px #1a2a0a40;
+  /* Farben aus dem StageCraft-Design (apps/web/src/index.css) */
+  --bg:#f3f6fb;--panel:#ffffff;--panel2:#e9eef5;--line:#d3dae2;--line2:#b3bcc4;
+  --text:#2a2c2d;--head:#0f172a;--muted:#4f5b61;--faint:#626d73;
+  --nav:#363839;--nav-fg:#ffffff;--nav-muted:#b4b8ba;
+  --accent:#0d5fc8;--accent-solid:#1171e4;--accent-solid-hover:#0c5fc4;--accent-soft:#e8f1fd;
+  --ok:#17703c;--orange:#a35700;
+  --brand-a:#08bfff;--brand-b:#0757ff;
+  --shadow:0 1px 2px #0f172a0d,0 12px 40px -18px #0f172a40;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --display:var(--body);
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root{
-    --bg:#111512;--panel:#181d19;--panel2:#1f261f;--line:#2c352d;--line2:#3a463b;
-    --text:#f1f2e9;--muted:#a7b0a4;--faint:#8a9587;
-    --accent:#c6f36b;--orange:#f1a35b;--blue:#79a4ff;
+    --bg:#17191b;--panel:#212426;--panel2:#1c1f21;--line:#34383b;--line2:#464b4f;
+    --text:#e8eaeb;--head:#f2f3f4;--muted:#9aa3a8;--faint:#939ca1;
+    --nav:#101213;--nav-fg:#f2f3f4;--nav-muted:#8d9498;
+    --accent:#4b94f0;--accent-solid:#1a73e0;--accent-solid-hover:#1666d0;--accent-soft:#172a44;
+    --ok:#4fcf83;--orange:#f2b13b;
     --shadow:0 1px 2px #0000004d,0 20px 60px -24px #000000b3;
     color-scheme:dark;
   }
@@ -37,21 +43,21 @@ a{color:inherit}
 img{max-width:100%;height:auto;display:block}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
 .wrap{width:min(1180px,calc(100% - 32px));margin-inline:auto}
-.skip{position:absolute;left:-999px;top:8px;background:var(--lime);color:var(--lime-ink);padding:8px 12px;border-radius:6px;z-index:50}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent-solid);color:#fff;padding:8px 12px;border-radius:6px;z-index:50}
 .skip:focus{left:16px}
 
 /* Kopf */
-.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:20;background:var(--nav);color:var(--nav-fg);border-bottom:1px solid #00000033}
 .top .wrap{height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{display:flex;align-items:center;gap:11px;font:700 21px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
-.logo small{font:500 11px var(--mono);letter-spacing:.14em;color:var(--accent)}
-.mark{width:22px;height:22px;border:1.5px solid var(--accent);display:grid;place-items:center;transform:rotate(45deg);border-radius:4px;flex:none}
-.mark:after{content:"";width:8px;height:8px;background:var(--accent)}
-.top nav{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+.logo{display:flex;align-items:center;gap:10px;font:650 21px/1 var(--display);letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.logo small{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brand-a)}
+footer .logo small{color:var(--accent)}
+.mark{width:22px;height:22px;flex:none}
+.top nav{display:flex;gap:22px;font-size:14px;color:var(--nav-muted)}
 .top nav a{text-decoration:none}
-.top nav a:hover{color:var(--text)}
-.top .gh{font:500 13px var(--mono);border:1px solid var(--line2);border-radius:6px;padding:6px 10px;text-decoration:none;white-space:nowrap}
-.top .gh:hover{border-color:var(--accent)}
+.top nav a:hover{color:var(--nav-fg)}
+.top .gh{font:500 13px var(--mono);border:1px solid #ffffff40;border-radius:6px;padding:6px 10px;text-decoration:none;white-space:nowrap}
+.top .gh:hover{border-color:var(--brand-a)}
 @media (max-width:900px){.top nav{display:none}}
 @media (max-width:420px){.top .logo{font-size:18px;gap:9px}.top .logo small{font-size:10px;letter-spacing:.1em}.top .gh{padding:5px 8px}}
 
@@ -59,17 +65,18 @@ img{max-width:100%;height:auto;display:block}
 section{padding:72px 0;border-bottom:1px solid var(--line)}
 .eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin:0 0 14px}
 .eyebrow:before{content:"";width:22px;height:1px;background:currentColor}
-h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:1;margin:0}
-h1{font-weight:700;font-size:clamp(42px,7vw,76px);letter-spacing:-.005em}
-h2{font-weight:700;font-size:clamp(32px,4.4vw,48px);letter-spacing:.005em;margin-bottom:14px}
-h3{font-weight:600;font-size:22px;letter-spacing:.03em}
+h1,h2,h3{font-family:var(--display);color:var(--head);line-height:1.08;margin:0}
+h1{font-weight:650;font-size:clamp(38px,6vw,64px);letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--brand-a),var(--brand-b));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-weight:650;font-size:clamp(28px,3.8vw,40px);letter-spacing:-.025em;margin-bottom:14px}
+h3{font-weight:600;font-size:20px;letter-spacing:-.01em}
 .lead{color:var(--muted);font-size:18px;max-width:640px;margin:0}
 .sub{color:var(--muted);max-width:680px;margin:0 0 36px}
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:7px;border:1px solid var(--line2);text-decoration:none;font-weight:600;font-size:15px;background:var(--panel)}
 .btn:hover{border-color:var(--accent)}
-.btn.primary{background:var(--lime);border-color:var(--lime);color:var(--lime-ink)}
-.btn.primary:hover{filter:brightness(1.05)}
+.btn.primary{background:var(--accent-solid);border-color:var(--accent-solid);color:#fff}
+.btn.primary:hover{background:var(--accent-solid-hover)}
 .btn svg{flex:none}
 code,.mono{font-family:var(--mono);font-size:.88em}
 code{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 5px;overflow-wrap:anywhere}
@@ -87,7 +94,7 @@ figcaption{font-size:13px;color:var(--faint);margin-top:10px}
 .stats{padding:0;border-bottom:1px solid var(--line)}
 .stats ul{list-style:none;margin:0;padding:40px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .stats li{border-left:2px solid var(--accent);padding-left:16px}
-.stats b{display:block;font:700 clamp(36px,5vw,52px)/1 var(--display);letter-spacing:.01em}
+.stats b{display:block;font:650 clamp(34px,4.6vw,48px)/1 var(--display);letter-spacing:-.03em;color:var(--head)}
 .stats span{display:block;color:var(--muted);font-size:14px;margin-top:6px}
 .stats .src{font:12px var(--mono);color:var(--faint);padding-bottom:28px;margin:-12px 0 0}
 @media (max-width:760px){.stats ul{grid-template-columns:repeat(2,1fr);gap:28px 20px}}
@@ -98,7 +105,7 @@ figcaption{font-size:13px;color:var(--faint);margin-top:10px}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px}
 .card .ic{width:34px;height:34px;border-radius:7px;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;color:var(--accent);margin-bottom:14px}
-.card h3{font-size:19px;margin-bottom:8px}
+.card h3{font-size:17px;margin-bottom:8px}
 .card p{color:var(--muted);font-size:14.5px;margin:0}
 .side{margin-top:28px;display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
 .side .shot{margin:0}
@@ -109,15 +116,15 @@ figcaption{font-size:13px;color:var(--faint);margin-top:10px}
 
 /* Projekte: Rack Manufaktur → Library → StageCraft */
 .flowsec{background:var(--panel2)}
-.flow{display:grid;grid-template-columns:1fr 92px 1.12fr 92px 1fr;align-items:stretch;margin-top:8px}
+.flow{display:grid;grid-template-columns:1fr 124px 1.12fr 124px 1fr;align-items:stretch;margin-top:8px}
 .node{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
 .node.hub{border:2px solid var(--accent);transform:translateY(-14px)}
 .node .img{aspect-ratio:16/10;background:#101316;border-bottom:1px solid var(--line);overflow:hidden}
 .node .img img{width:100%;height:100%;object-fit:cover;object-position:left top}
 .node .body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
 .node .role{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
-.node h3{font-size:28px;margin-bottom:12px}
-.node.hub h3{font-size:32px}
+.node h3{font-size:24px;margin-bottom:12px}
+.node.hub h3{font-size:27px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
 .tag{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line2);border-radius:4px;padding:3px 7px;color:var(--muted)}
 .tag.live{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 55%,transparent)}
@@ -128,22 +135,25 @@ figcaption{font-size:13px;color:var(--faint);margin-top:10px}
 .node .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:600;font-size:15px}
 .node .links a{color:var(--accent);text-underline-offset:3px}
 .node .note{font-size:13.5px;color:var(--faint);margin:auto 0 0}
-.link{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 4px;text-align:center}
-.link .line{position:relative;width:100%;height:2px;background:var(--accent);display:grid;place-items:center}
-.link.planned .line{background:none;border-top:2px dashed var(--line2)}
-.link .line svg{background:var(--panel2);color:var(--accent);border:2px solid currentColor;border-radius:50%;width:26px;height:26px;padding:4px;box-sizing:border-box}
-.link.planned .line svg{color:var(--faint);margin-top:-2px}
+.link{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0;text-align:center}
+.link .lbl{max-width:112px}
+.link .line{position:relative;width:100%;height:26px;display:grid;place-items:center}
+.link .line:before{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px solid var(--accent)}
+.link.planned .line:before{border-top:2px dashed var(--line2)}
+.link .line svg{position:relative;background:var(--panel2);color:var(--accent);border:2px solid currentColor;border-radius:50%;width:26px;height:26px;padding:4px;box-sizing:border-box}
+.link.planned .line svg{color:var(--faint)}
 .link .lbl{font:12px/1.35 var(--body);color:var(--muted)}
 .link .lbl b{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .link.planned .lbl b{color:var(--faint)}
 @media (max-width:1060px){
   .flow{grid-template-columns:1fr;max-width:620px;margin-inline:auto}
   .node.hub{transform:none}
-  .link{flex-direction:row;padding:14px 0;gap:14px}
-  .link .line{width:2px;height:44px;flex:none}
-  .link.planned .line{border-top:0;border-left:2px dashed var(--line2)}
+  .link{flex-direction:row;padding:6px 0;gap:14px}
+  .link .lbl{max-width:none;text-align:left}
+  .link .line{width:26px;height:56px;flex:none}
+  .link .line:before{left:50%;right:auto;top:0;bottom:0;border-top:0;border-left:2px solid var(--accent)}
+  .link.planned .line:before{border-top:0;border-left:2px dashed var(--line2)}
   .link .line svg{transform:rotate(90deg)}
-  .link.planned .line svg{margin:0 0 0 -2px}
   .link .lbl br{display:none}
 }
 
@@ -159,7 +169,7 @@ td{color:var(--muted)}
 /* Offene Daten */
 .open{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .open .card{padding:24px}
-.open h3{font-size:22px;margin-bottom:12px}
+.open h3{font-size:20px;margin-bottom:12px}
 .open ol{margin:0 0 14px;padding-left:20px;color:var(--muted)}
 .open ol li{margin-bottom:6px}
 .api{list-style:none;margin:0 0 14px;padding:0;font-size:14px}
@@ -202,7 +212,7 @@ footer{padding:48px 0 40px}
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="./" aria-label="Stagecraft Solutions, Startseite"><span class="mark" aria-hidden="true"></span>Stagecraft <small>Solutions</small></a>
+    <a class="logo" href="./" aria-label="Stagecraft Solutions, Startseite"><svg class="mark" viewBox="0 0 362 370" aria-hidden="true"><defs><linearGradient id="mk1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#08BFFF"/><stop offset="1" stop-color="#0757FF"/></linearGradient></defs><g fill="url(#mk1)"><path d="M18 105 L344 0 L344 91 Q344 110 326 117 L18 216 Z"/><path d="M18 278 L270 202 Q296 194 270 181 L151 150 L344 169 L344 244 Q344 266 323 273 L18 370 Z"/></g></svg>Stagecraft <small>Solutions</small></a>
     <nav aria-label="Abschnitte">
       <a href="#projekte">Projekte</a>
       <a href="#pruefungen">Prüfungen</a>
@@ -219,7 +229,7 @@ footer{padding:48px 0 40px}
 <section class="hero" aria-labelledby="hero-h">
   <div class="wrap">
     <p class="eyebrow">Werkzeuge für Veranstaltungstechnik</p>
-    <h1 id="hero-h">Racks planen, die wirklich passen.</h1>
+    <h1 id="hero-h">Racks planen, die <em>wirklich passen.</em></h1>
     <p class="lead">Eine offene Datenbank mit Geräten und Rackteilen, ein Konfigurator für 19″-Rack-Cases und eine Software für Verleih und Produktion. Library und Konfigurator sind kostenlos und brauchen kein Konto.</p>
     <div class="btns">
       <a class="btn primary" href="https://rack.stagecraft.solutions/">Rack konfigurieren
@@ -273,7 +283,7 @@ footer{padding:48px 0 40px}
 
       <div class="link live" aria-label="Verbindung: Library liefert Geräte, Ansichten und Teile per API an die Rack Manufaktur, live">
         <span class="line" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
-        <span class="lbl">Geräte, Ansichten, Teile<br><b>per API · live</b></span>
+        <span class="lbl">Geräte, Ansichten, Teile <br><b>per API · live</b></span>
       </div>
 
       <article class="node hub">
@@ -294,7 +304,7 @@ footer{padding:48px 0 40px}
 
       <div class="link planned" aria-label="Verbindung: Library soll StageCraft mit Artikelstammdaten versorgen, geplant">
         <span class="line" aria-hidden="true"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
-        <span class="lbl">Artikelstammdaten<br><b>geplant</b></span>
+        <span class="lbl">Artikelstammdaten <br><b>geplant</b></span>
       </div>
 
       <article class="node" id="stagecraft">
@@ -387,7 +397,7 @@ footer{padding:48px 0 40px}
     <div class="side">
       <figure class="shot">
         <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>Seitenansicht</span></div>
-        <img src="assets/img/rack-manufaktur-seitenansicht.webp" width="1396" height="1088" loading="lazy"
+        <img src="assets/img/rack-manufaktur-seitenansicht.webp" width="1324" height="1018" loading="lazy"
           alt="Seitenansicht in der Rack Manufaktur: jedes Modul als Balken mit seiner Einbautiefe in Millimetern, zum Beispiel Shure ULXD4D 330 mm und Schublade 392 mm. Rechts die Rückschiene bei 457 mm, die Einbautiefe von 482 mm und ein hinten montiertes Steckerfeld mit 80 mm.">
       </figure>
       <div>
@@ -487,7 +497,7 @@ footer{padding:48px 0 40px}
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="logo" href="./"><span class="mark" aria-hidden="true"></span>Stagecraft <small>Solutions</small></a>
+        <a class="logo" href="./"><svg class="mark" viewBox="0 0 362 370" aria-hidden="true"><defs><linearGradient id="mk2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#08BFFF"/><stop offset="1" stop-color="#0757FF"/></linearGradient></defs><g fill="url(#mk2)"><path d="M18 105 L344 0 L344 91 Q344 110 326 117 L18 216 Z"/><path d="M18 278 L270 202 Q296 194 270 181 L151 150 L344 169 L344 244 Q344 266 323 273 L18 370 Z"/></g></svg>Stagecraft <small>Solutions</small></a>
         <p>Offene Daten und Werkzeuge für Veranstaltungstechnik: Library, Rack Manufaktur und StageCraft.</p>
       </div>
       <div>
