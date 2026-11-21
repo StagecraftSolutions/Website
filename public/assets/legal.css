@@ -1,0 +1,36 @@
+/* Rechtliche Seiten – gleiche Farben und Schriften wie die Startseite */
+:root {
+  --bg: #111512; --surface: #181d19; --line: #2c352d; --fg: #f1f2e9; --muted: #a7b0a4; --lime: #c6f36b;
+  --f-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root { --bg: #f3f4ee; --surface: #ffffff; --line: #d9ddd0; --fg: #151a12; --muted: #4f584c; --lime: #3f6a00; color-scheme: light; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--f-body); font-size: 15px; line-height: 1.6;
+  padding: 0 max(16px, env(safe-area-inset-left, 0px)) 48px max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 760px; margin: 0 auto; }
+.top { display: flex; align-items: center; gap: 10px; padding-block: 18px 14px; }
+.top a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 11px; }
+.mark { width: 22px; height: 22px; border: 1.5px solid var(--lime); display: grid; place-items: center; transform: rotate(45deg); border-radius: 4px; flex: none; }
+.mark::after { content: ""; width: 8px; height: 8px; background: var(--lime); }
+.top b { font-family: var(--f-display); font-weight: 700; font-size: 24px; letter-spacing: .06em; text-transform: uppercase; line-height: 1; }
+.top small { font: 500 12px var(--f-mono); letter-spacing: .12em; color: var(--lime); }
+.back { margin-left: auto; font-size: 13.5px; color: var(--muted) !important; }
+.back:hover { color: var(--lime) !important; }
+main { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 28px 28px; }
+h1 { font-family: var(--f-display); font-weight: 700; font-size: 34px; text-transform: uppercase; letter-spacing: .01em; margin: 20px 0 8px; line-height: 1.1; }
+h2 { font-family: var(--f-display); font-weight: 600; font-size: 20px; text-transform: uppercase; letter-spacing: .04em; margin: 28px 0 6px; color: var(--lime); }
+h3 { font-size: 15px; margin: 18px 0 4px; }
+p, ul { margin: 0 0 10px; }
+a { color: var(--lime); text-underline-offset: 3px; }
+address { font-style: normal; }
+footer { margin-top: 20px; display: flex; gap: 16px; font-size: 13px; color: var(--muted); }
+footer a { color: var(--fg); }
+@media (max-width: 560px) { main { padding: 4px 18px 22px; } h1 { font-size: 28px; } .top b { font-size: 20px; } }
