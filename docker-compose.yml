@@ -1,0 +1,13 @@
+# Hermes: stagecraft.solutions → DSM-Reverse-Proxy → 127.0.0.1:8752
+name: website
+
+services:
+  web:
+    build: .
+    image: stagecraft-solutions/website:dev
+    container_name: website-stagecraft-solutions
+    restart: unless-stopped
+    ports: ["127.0.0.1:8752:80"]
+    read_only: true
+    tmpfs: [/var/cache/nginx, /var/run, /tmp]
+    security_opt: [no-new-privileges:true]
