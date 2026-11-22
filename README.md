@@ -2,7 +2,7 @@
 
 Landingpage von Stagecraft Solutions unter `stagecraft.solutions`.
 
-**Stand:** Landingpage mit Hero, Kennzahlen, Ablauf, Prüfungen der Rack Manufaktur, den drei Projekten, offenen Daten, FAQ, Impressum und Datenschutz. Noch `noindex`.
+**Stand:** Landingpage als Open-Source-Plattform: Hero mit Slogan und den zwei Säulen (öffentliche Library, Open-Source-CRM), Kennzahlen, Plattform, Werkzeuge (Rack Manufaktur u. a.), Prüfungen der Rack Manufaktur, offenen Daten, FAQ, Impressum und Datenschutz. Noch `noindex`.
 
 Lokal ansehen: `python3 -m http.server 8771 -d public`, dann <http://localhost:8771/>. Keine externen Quellen; Schriften (OFL 1.1) und Bilder liegen in `public/assets/`.
 
