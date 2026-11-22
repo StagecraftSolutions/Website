@@ -163,6 +163,13 @@ figcaption{font-size:13px;color:var(--faint);margin-top:10px}
 .band{position:relative;height:58px;display:grid;place-items:center}
 .band:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--accent);opacity:.6}
 .band span{position:relative;font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--panel2);padding:5px 12px;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:20px}
+.libshots{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.libshots figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.libshots .img{aspect-ratio:16/10;background:#101316;overflow:hidden;border-bottom:1px solid var(--line)}
+.libshots img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.libshots figcaption{margin:0;padding:12px 16px 14px;font-size:14px;color:var(--muted)}
+.libshots figcaption b{display:block;color:var(--head);font-weight:600;font-size:15px;margin-bottom:2px}
+@media (max-width:760px){.libshots{grid-template-columns:1fr}}
 @media (max-width:1060px){.tools{grid-template-columns:1fr 1fr}}
 @media (max-width:760px){
   .layer,.layer.lib{grid-template-columns:1fr}
@@ -259,7 +266,7 @@ footer{padding:48px 0 40px}
         <div class="body">
           <p class="num">01 · Öffentliche Library</p>
           <h2>Die Gerätedaten der Branche, offen für alle</h2>
-          <p>Maße, Gewichte, Anschlüsse und maßstäbliche Ansichten. Als JSON in Git, abrufbar über eine offene API.</p>
+          <p>Maße, Gewichte, Anschlüsse, maßstäbliche Ansichten und 3D-Modelle. Als JSON in Git, abrufbar über eine offene API.</p>
           <div class="tags"><span class="tag live">Live</span><span class="tag">Offene Daten</span><span class="tag">JSON-API</span></div>
         </div>
       </a>
@@ -304,10 +311,21 @@ footer{padding:48px 0 40px}
           <h3>Stagecraft Library</h3>
           <div class="tags"><span class="tag live">Live</span><span class="tag">Offene Daten</span><span class="tag">JSON-API</span><span class="tag">Offline</span></div>
           <p>Offene Artikeldatenbank für Veranstaltungstechnik: 429 Artikel und 107 maßstäbliche Ansichten, ein Artikel pro JSON-Datei in Git, Änderungen per Pull Request.</p>
-          <p>Neben Maßen und Gewicht stehen dort Anschlüsse je Geräteseite und Steckgesichter. So können Planungswerkzeuge Rackbelegung und Verkabelung selbst ableiten. Abrufbar über <code>library.stagecraft.solutions</code> oder als geklonter Ordner, ganz ohne Internet.</p>
+          <p>Neben Maßen und Gewicht stehen dort Anschlüsse je Geräteseite, Steckgesichter und 3D-Modelle. So können Planungswerkzeuge Rackbelegung, Verkabelung und 3D-Planung selbst ableiten. Abrufbar über <code>library.stagecraft.solutions</code> oder als geklonter Ordner, ganz ohne Internet.</p>
           <div class="links"><a href="https://library.stagecraft.solutions/">Library öffnen</a><a href="https://github.com/StagecraftSolutions/Library" rel="noopener">Quellcode</a><a href="#offen">Daten abrufen</a></div>
         </div>
       </article>
+
+      <div class="libshots">
+        <figure>
+          <div class="img"><img src="assets/img/library-ansicht.webp" width="1800" height="1640" loading="lazy" alt="Artikel Shure Axient Digital AD4D in der Library: maßstäbliche Vorder- und Rückansicht mit allen Anschlüssen, darunter Einbau in die 19″-Rackschiene."></div>
+          <figcaption><b>Vorder- und Rückansicht</b> Maßstäblich in mm, mit der Position jedes Anschlusses.</figcaption>
+        </figure>
+        <figure>
+          <div class="img"><img src="assets/img/library-3d.webp" width="1800" height="1640" loading="lazy" alt="Artikel Rackwanne 1 HE in der Library: drehbares 3D-Modell mit Knöpfen für 3D, Vorn, Seite und Oben und den Maßen 483 × 43,6 × 375 mm."></div>
+          <figcaption><b>3D-Modell</b> STL, OBJ oder glTF am Artikel hinterlegen und im Browser drehen.</figcaption>
+        </figure>
+      </div>
 
       <div class="band" aria-hidden="true"><span>liefert die Daten für</span></div>
 
@@ -467,6 +485,7 @@ footer{padding:48px 0 40px}
           <li><code>articles/{id}.json</code><span>ein Artikel</span></li>
           <li><code>views/{id}.json</code><span>maßstäbliche Ansicht</span></li>
           <li><code>dxf/{id}.dxf</code><span>Einbauausschnitt eines Steckverbinders</span></li>
+          <li><code>media/{datei}</code><span>eigene Bilder und 3D-Modelle</span></li>
           <li><code>articles.csv</code><span>Tabelle für Excel und Co.</span></li>
         </ul>
         <p><a href="https://library.stagecraft.solutions/api/v1/articles/ulxd4d.json">Beispiel: Shure ULXD4D als JSON</a></p>
